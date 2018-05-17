@@ -87,11 +87,8 @@ export default function loadAndDrawCampaignContribute(campaignID, callback) {
     // contribution error
     // handleCampaignContributeReview(campaignData);
 
-    // weifund amount contributor amount
+   
     el('#campaign_contributeAmount').addEventListener('change', e => handleCampaignContributeReview(campaignData));
-
-    // update form when disclaimer is checked
-    el('#campaign-contribute-disclaimer').addEventListener('change', e => handleCampaignContributeReview(campaignData));
 
     // contirbute to campaign buton
     el('#campaign-contribute-to-campaign').addEventListener('click', () => {
@@ -113,8 +110,10 @@ export default function loadAndDrawCampaignContribute(campaignID, callback) {
     });
 
     const enhancer = contracts.Model1Enhancer.factory.at(campaignData.enhancer);
+   console.log(enhancer );
     const pollTokenPrice = () => {
       enhancer.price((err, result) => {
+        console.log(err+"   "+result);
         if (!err && result) {
           const etherValue = new BigNumber(web3.fromWei(result, 'ether'));
 

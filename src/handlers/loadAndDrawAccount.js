@@ -5,7 +5,7 @@ import { log, etherScanAddressUrl, etherScanTxHashUrl, oneDay, emptyWeb3Address 
 import Contracts from 'weifund-contracts';
 import BigNumber from 'bignumber.js';
 import lightwallet from 'eth-lightwallet';
-
+import { getCampaigns } from 'weifund-lib';
 import { el } from '../document';
 import { setDefaultAccount, getDefaultAccount, getCampaign, setCampaign,
   getNetwork, getLocale, validCampaigns, getContractEnvironment, txObject } from '../environment';
@@ -668,10 +668,41 @@ function loadAccount() {
     // load token at this address
     el('#tokens-loading').innerHTML = '<h3>Loading token data...</h3>';
     el('#tokens').innerHTML = '';
-    loadTokenFromEnhancer('0x725cfbffab60e77b8ea38c870c75b78efed50a51', contracts);
+
+    getCampaigns({
+      // set network
+      // or 'testnet'
+      network: getContractEnvironment(),
+
+      // set campaign selector
+      // array (i.e. array of campaignIDs)
+      selector: validCampaigns(),
+    }, (loadCampaignsError, loadCampaignsResult) => {
+
+      // download snapshot
+      // download('getCampaignsState.json', JSON.stringify(bignumberToSafeObject(loadCampaignsResult)));
+
+      // handle errors
+      if (loadCampaignsError) {
+        el('#tokens-loading').innerHTML = '';
+        el('#tokens-loading').appendChild(yo`<span>
+          Error while loading campaigns ${JSON.stringify(loadCampaignsError)}
+        </span>`);
+        return;
+      }
+      
+      if (typeof loadCampaignsResult === 'object') {
+        Object.keys(loadCampaignsResult).forEach((campaignID) => {
+          console.log(loadCampaignsResult[campaignID].enhancer);
+          loadTokenFromEnhancer(loadCampaignsResult[campaignID].enhancer, contracts);     
+        });
+      }
+    });
+
+/*     loadTokenFromEnhancer('0x725cfbffab60e77b8ea38c870c75b78efed50a51', contracts);
     loadTokenFromEnhancer('0xb1d393bbf102e60b62f53de35a9a107d9cb06b74', contracts);
     loadTokenFromEnhancer('0x8ce41825df7a3bede52c183dbe23bbe6e05e138d', contracts);
-    loadTokenFromEnhancer('0x838cdb6596c3310066763e90c7418304053e77b2', contracts);
+    loadTokenFromEnhancer('0x838cdb6596c3310066763e90c7418304053e77b2', contracts); */
 
 
     // 0x467ef6ac8f3689d35b0fcfcbfa09a9ab498d7020

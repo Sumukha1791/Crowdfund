@@ -10,6 +10,7 @@ const views = [
   'view-receipt',
   'view-account',
   'view-404',
+  'view-campaign-register'
 ];
 
 // app subviews
@@ -18,6 +19,8 @@ const subViews = [
   'view-campaign-details',
   'view-campaign-contracts',
   'view-campaign-qr',
+
+  'view-campaignregister',
 
   'view-account-panel',
   'view-account-restore',
@@ -64,14 +67,14 @@ function closeAllViews() {
 // open view
 function openView(openViewId) {
   window.scrollTo(0, 0);
-  document.querySelector(`#footer-wrapper`).style.display = 'none';
+ 
 
   // clsoe all views
   closeAllViews();
 
   // open selected view
   document.querySelector(`#${openViewId}`).style.display = '';
-  document.querySelector(`#footer-wrapper`).style.display = '';
+
 }
 
 // open view

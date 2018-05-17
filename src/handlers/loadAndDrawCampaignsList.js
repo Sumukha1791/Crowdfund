@@ -69,6 +69,7 @@ function safeObjectToBigNumber(value) {
 }
 
 function drawCampaigns(campaignsToDraw) {
+  console.log(campaignsToDraw);
   // reset inner html
   el('#staffpicks_list').innerHTML = ``;
   el('#campaigns_list').innerHTML = ``;
@@ -113,7 +114,7 @@ export default function loadAndDrawCampaignsList() {
   el('#view-list').appendChild(campaignsView({ t }));
 
   // load snapshot
-  if (getStoredCampaigns().length === 0) {
+  /* if (getStoredCampaigns().length === 0) {
     const snapshotCampaigns = safeObjectToBigNumber(stateSnapshot);
     Object.keys(snapshotCampaigns).forEach(campaignID => {
       setCampaign(campaignID, snapshotCampaigns[campaignID]);
@@ -123,7 +124,7 @@ export default function loadAndDrawCampaignsList() {
     });
   } else {
     drawCampaigns(getStoredCampaigns());
-  }
+  } */
 
   // get the number of campaigns then load campaigns list accordingly
   campaignRegistry.numCampaigns((numCampaignsError, numCampaignsResult) => {
@@ -163,10 +164,11 @@ export default function loadAndDrawCampaignsList() {
       // draw campaigns page
       el('#view-list').innerHTML = '';
       el('#view-list').appendChild(campaignsView({ t }));
-
+      var count = 0 ;
       // if load result is nice
       if (typeof loadCampaignsResult === 'object') {
         Object.keys(loadCampaignsResult).forEach((campaignID) => {
+          console.log(++count+" cam "+campaignID);
           setCampaign(campaignID, loadCampaignsResult[campaignID]);
         });
 

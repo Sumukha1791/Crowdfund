@@ -8,7 +8,7 @@ export default function campaignHighlightMedium(options) {
   const campaignObject = options.campaignObject;
   const web3 = options.web3;
   const getLocale = options.getLocale;
-
+  console.log(campaignObject);
   // return nothing if invalid campaign
   if (!campaignObject.valid) {
     return ``;
@@ -19,7 +19,7 @@ export default function campaignHighlightMedium(options) {
     <div class="list-campaign-feature">
       <div class="row">
         <a href="/campaign/${campaignObject.id}" class="col-xs-5" style="height: 100%;
-          background: url(${campaignObject.data.campaignSchema.image});
+          background: url(${campaignObject.data.image});
           background-position: center;
           background-size: cover;">
         </a>
@@ -33,8 +33,8 @@ export default function campaignHighlightMedium(options) {
 overflow: hidden;
 text-overflow: ellipsis;">
               ${(campaignObject.hasValidData
-                && typeof campaignObject.data.campaignSchema.i18n[getLocale()] !== "undefined"
-                && campaignObject.data.campaignSchema.i18n[getLocale()].description
+                && typeof campaignObject.data.i18n[getLocale()] !== "undefined"
+                && campaignObject.data.i18n[getLocale()].description
                 || t('campaignHighlightMedium.defaultDescription'))}
             </p>
 

@@ -18,7 +18,7 @@ function getRouter() {
   return router;
 }
 
-// the only allowed campaigns on WeiFund
+
 const allowedCampaigns = validCampaigns();
 
 // open campaign helper
@@ -79,6 +79,13 @@ function setupRouter(options) {
       options.loadAndDrawCampaignsList();
 
       openView('view-list');
+    }],
+    ['/registercampaign',function(params){
+      openView('view-campaign-register');
+
+      options.handleCampaignRegister(()=>{
+
+      })
     }],
     ['/account', function(params){
       openView('view-account');

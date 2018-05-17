@@ -43,12 +43,6 @@ function drawModal() {
   el('#modal-wrapper').appendChild(modal({ t }));
 }
 
-function drawFooter() {
-  el('#footer-wrapper').innerHTML = '';
-  el('#footer-wrapper').appendChild(footer({ t }));
-  buildLocaleToggles();
-}
-
 function drawNavBar() {
   el('#nav-wrapper').innerHTML = '';
   el('#nav-wrapper').appendChild(navBar({ t }));
@@ -59,7 +53,7 @@ function drawNavBar() {
 // module exports
 module.exports = {
   drawNavBar,
-  drawFooter,
+ 
   drawModal,
 
   loadAndDrawCampaign: require('./loadAndDrawCampaign').default,
@@ -67,6 +61,6 @@ module.exports = {
   loadAndDrawCampaignsList: require('./loadAndDrawCampaignsList').default,
   loadAndDrawAccount: require('./loadAndDrawAccount').default,
   handleConfirmOnPageExit: require('./handleConfirmOnPageExit').default,
-
+  handleCampaignRegister: require('./handleCampaignRegister').default,
   handleCampaignContribution: require('./handleCampaignContribution').default,
 };

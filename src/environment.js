@@ -62,7 +62,7 @@ export function txObject() {
 // this and locale will be localstore
 // environment
 export function getNetwork(){
-  return 'mainnet'; // or 'ropsten' or ''
+  return 'ropsten'; // or 'ropsten' or ''
 }
 
 // name for
@@ -74,12 +74,12 @@ export function nameOf(address) {
 }
 
 export function validCampaigns() {
-  return [0, 1, 3, 4];
+  return [0, 1, 2, 3];
 }
 
 // get current locale
 export function getLocale() {
-  return store.get('locale') || 'en';
+  return 'en';
 }
 
 // set locale
@@ -89,7 +89,7 @@ export function setLocale(locale) {
 
 // get contract environment
 export function getContractEnvironment() {
-  return 'mainnet';
+  return 'ropsten';
 }
 
 // get all campaigns

@@ -64,6 +64,7 @@ export default function handleCampaignContribution(){
     gasPrice: web3.toWei('0.00000002', 'ether').toString(10),
     gas: txObject().gas,
   }));
+  console.log(txObject().from.slice(2));
   contributionParams.push((contributeError, contributeResultTxHash) => {
     resetReviewResponses();
 

@@ -25,7 +25,7 @@ export function setMetamaskProvider(cb) {
           return reject(networkError, null);
         }
 
-        if (network !== '1') {
+        if (network !== '3') {
           return reject(new Error('Invalid network selected, must be on Ethereum mainnet.'), null);
         }
 
@@ -39,6 +39,7 @@ export function setMetamaskProvider(cb) {
               return reject(balanceError, null);
             }
 
+        
             setDefaultAccount(accounts[0]);
             setAccountBalance(balance);
 

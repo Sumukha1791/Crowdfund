@@ -3,9 +3,9 @@ import { setDefaultAccount } from './environment';
 import  { web3, setupWeb3Provider } from './web3';
 import  { setupIPFSProvider } from './ipfs';
 import { setupRouter, getRouter } from './router';
-import { drawNavBar, drawFooter, loadAndDrawCampaign,
+import { drawNavBar, loadAndDrawCampaign,
   loadAndDrawCampaignsList, loadAndDrawCampaignContribute, handleConfirmOnPageExit,
-  loadAndDrawAccount } from './handlers';
+  loadAndDrawAccount, handleCampaignRegister } from './handlers';
 
 // draw navbar
 drawNavBar();
@@ -27,6 +27,7 @@ function loadApp(loadAppEvent) {
 
   // setup the router
   setupRouter({
+    handleCampaignRegister: handleCampaignRegister,
     loadAndDrawCampaignContribute: loadAndDrawCampaignContribute,
     loadAndDrawCampaign: loadAndDrawCampaign,
     loadAndDrawCampaignsList: loadAndDrawCampaignsList,
@@ -36,6 +37,4 @@ function loadApp(loadAppEvent) {
   // set initial route from params
   getRouter()(window.location.pathname);
 
-  // draw footer later
-  drawFooter();
 }

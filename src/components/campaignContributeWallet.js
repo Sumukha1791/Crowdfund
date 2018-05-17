@@ -121,8 +121,6 @@ export default function campaignContributeWallet(options) {
 
       <h4>
         <b>WRITE DOWN YOUR SEED PHRASE.</b>
-        WeiFund does not store your wallet. Your seed phrase is required to
-        access your assets.
       </h4>
 
       <br /><br />
@@ -197,13 +195,6 @@ export default function campaignContributeWallet(options) {
       <br />
 
       <h4>
-        Seed phrases are unencrypted, but WeiFund encrypts your in-app
-        lightwallet with a password that you'll need to enter before the app
-        can access your assets. Choose a password to protect your lightwallet
-        from unauthorized access.
-      </h4>
-
-      <h4>
         <b>Note, Strong passwords contain upper case letters,
         lower case letters, numbers, and special characters.</b>
         Using dictionary words in your password makes it weaker.
@@ -234,11 +225,6 @@ export default function campaignContributeWallet(options) {
       <br />
       <br />
 
-      <p>
-        Warning: do not use or upload a wallet from sites like myetherwallet or any other wallet system.
-        The WeiFund MVP only supports our own light-wallet configuration.
-      </p>
-
       <br />
       <br />
 
@@ -268,19 +254,6 @@ export default function campaignContributeWallet(options) {
 
       <br />
       <br />
-
-      <h4>
-        <b>DISCLAIMER</b>
-        This lightwallet is still in beta and is presently not recommended for
-        the storage of large amounts of ETH.
-      </h4>
-
-      <br />
-
-      <h4>
-        You can create a new Ethereum <i>Lightwallet</i> wallet to contribute to a campaign or use
-        an existing wallet if you already have one.
-      </h4>
 
       <br />
 

@@ -35,7 +35,7 @@ export default function campaignFocusOverviewView(options) {
       <div class="row">
         <div class="col-xs-12">
           ${campaignObject.hasValidData
-            && campaignObject.data.campaignSchema.i18n[getLocale()].about
+            && campaignObject.data.i18n[getLocale()].about
             || 'No about section was written for this campaign.'}
         </div>
       </div>
@@ -98,8 +98,8 @@ export default function campaignFocusOverviewView(options) {
 
           <h4>Website</h4>
           ${campaignObject.hasValidData
-            && yo`<a href="${campaignObject.data.campaignSchema.url}" target="_blank">
-              ${campaignObject.data.campaignSchema.url}</a>`
+            && yo`<a href="${campaignObject.data.url}" target="_blank">
+              ${campaignObject.data.url}</a>`
             || `No website was found`}</a>
         </div>
       </div>

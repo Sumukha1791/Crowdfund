@@ -4,7 +4,8 @@ import campaignMedium from './campaignMedium';
 import campaignHighlightMedium from './campaignHighlightMedium';
 import campaignContributeView from './campaignContributeView';
 import campaignContributeReceipt from './campaignContributeReceipt';
-
+import campaignRegisterForm from './campaignRegisterForm';
+import campaignRegisterAddressForm from './campaignRegisterAddressForm';
 import campaignRefundForm from './campaignRefundForm';
 import campaignRefundReview from './campaignRefundReview';
 
@@ -17,7 +18,8 @@ import accountView from './accountView';
 module.exports = {
   campaignRefundReview,
   campaignRefundForm,
-
+  campaignRegisterForm,
+  campaignRegisterAddressForm,
   campaignHighlightMedium,
   campaignMedium,
   campaignsView,

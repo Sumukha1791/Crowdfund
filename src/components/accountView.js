@@ -21,9 +21,6 @@ export default function accountView(options) {
 
           <br />
           <br />
-
-          Warning: do not use or upload a wallet from sites like myetherwallet or any other wallet system.
-          The WeiFund MVP only supports our own light-wallet configuration.
         </p>
 
         <br />

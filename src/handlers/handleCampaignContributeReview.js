@@ -7,6 +7,7 @@ import { getAccountBalance, txObject, getTokenPrice } from '../environment';
 export default function handleCampaignContributeReview(campaignData) {
   const campaignContributeID = el('#campaignFormID').value;
   const contributeAmount = el('#campaign_contributeAmount').value;
+
   const contirbuteAmountBN = new BigNumber(contributeAmount);
   const accountBalance = getAccountBalance();
   const gasPrice = web3.toWei('0.00000002', 'ether');
@@ -16,7 +17,7 @@ export default function handleCampaignContributeReview(campaignData) {
   const units = new BigNumber(contirbuteAmountBN.dividedBy(getTokenPrice()).toFixed(0)).times(getTokenPrice());
 
   // parse float
-  if (!units.eq(contirbuteAmountBN)) {
+   if (!units.eq(contirbuteAmountBN)) {
     el('#campaign-contribute-review-button').href = ``;
     el('#campaign_contributeAmountGroup').style.border = `red solid 1px`;
     el('#campaign_contributeAmount').focus();
@@ -59,10 +60,10 @@ export default function handleCampaignContributeReview(campaignData) {
     return;
   } else {
     el('#campaign_contributeAmountGroup').style.border = `none`;
-  }
+  } 
 
   // parse float
-  if (contributionAmountWei.add(actualGasCost).gt(accountBalance)) {
+   if (contributionAmountWei.add(actualGasCost).gt(accountBalance)) {
     el('#campaign-contribute-review-button').href = ``;
     el('#campaign_contributeAmountGroup').style.border = `red solid 1px`;
     el('#campaign_contributeAmount').focus();
@@ -79,7 +80,7 @@ export default function handleCampaignContributeReview(campaignData) {
     return;
   } else {
     el('#campaign_contributeAmountGroup').style.border = `none`;
-  }
+  } 
 
   // parse float
   if (contirbuteAmountBN.lt(getTokenPrice())) {
@@ -101,25 +102,7 @@ export default function handleCampaignContributeReview(campaignData) {
     el('#campaign_contributeAmountGroup').style.border = `none`;
   }
 
-  // disclaimer check
-  if (!el('#campaign-contribute-disclaimer').checked) {
-    el('#campaign-contribute-review-button').href = ``;
-    el('#campaign-contribute-disclaimer').style.border = `red solid 1px`;
-    el('#campaign-contribute-disclaimer').focus();
-    el('#campaign-contribute-disclaimer').blur();
-
-    // prompt error
-    el('#campaign-contribute-form-response').innerHTML = '';
-    el('#campaign-contribute-form-response').style.display = 'block';
-    el('#campaign-contribute-form-response').appendChild(yo`<span>
-      <h2>Mandatory Disclaimer</h2>
-      <p>In order to contribute through WeiFund, you must agree to the disclaimer.</p>
-    </span>`);
-
-    return;
-  } else {
-    el('#campaign-contribute-disclaimer').style.border = 'none';
-  }
+  
 
   el('#campaign_contribute_info_response').style.display = 'none';
   el('#campaign_contribute_warning_response').style.display = 'none';
